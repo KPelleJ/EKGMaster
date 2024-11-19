@@ -10,5 +10,12 @@
         public string City { get; set; }
         public UserType Usertype { get; set; }
         public enum UserType { Admin=1, RegularUser=2}
+        public User(Credential credential, string userName, string city, UserType userType)
+        {
+            Credential = credential;
+            UserName = userName;
+            City = city;
+            Usertype = userType;
+        }
     }
 }
