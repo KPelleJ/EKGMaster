@@ -1,0 +1,33 @@
+﻿@page
+@model EKGMaster.Pages.Account.UserRegistrationModel
+@{
+}
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <h3>Account information</h3>
+        <div class="mb-3">
+            <label asp-for="User.UserName"></label>
+            <input type="text" asp-for="User.UserName" class="form-control" />
+            <span class="text-danger" asp-validation-for="User.UserName"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="User.City"></label>
+            <input type="text" asp-for="User.City" class="form-control" />
+            <span class="text-danger" asp-validation-for="User.City"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Credential.Email"></label>
+            <input type="email" asp-for="Credential.Email" class="form-control" />
+            <span class="text-danger" asp-validation-for="Credential.Email"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Credential.Password"></label>
+            <input type="password" asp-for="Credential.Password" class="form-control" />
+            <span class="text-danger" asp-validation-for="Credential.Password"></span>
+        </div>
+        <div class="mb-2">
+            <input type="submit" class="btn btn-primary" value="Register User" />
+        </div>
+    </form>
+</div>

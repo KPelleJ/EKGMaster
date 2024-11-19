@@ -16,12 +16,12 @@ namespace EKGMaster.Repositories
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string sql = "INSERT INTO Users (UserName, CredMail, City) " +
-                            "VALUES (@UserName, @UserLevelId, @CredMail, @City)";
+                string sql = "INSERT INTO Users (UserName, CredEmail, City) " +
+                            "VALUES (@UserName, @CredEmail, @City)";
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 command.Parameters.AddWithValue("@UserName", t.UserName);
-                command.Parameters.AddWithValue("@CredMail", t.Credential.Email);
+                command.Parameters.AddWithValue("@CredEmail", t.CredMail);
                 command.Parameters.AddWithValue("@City", t.City);
 
                 command.ExecuteNonQuery();
