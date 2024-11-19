@@ -11,12 +11,15 @@
         public string City { get; set; }
         public UserType Usertype { get; set; }
         public enum UserType { Admin=1, RegularUser=2}
-        public User(string userName, string city, UserType userType, string credMail)
+        public User(string userName, string city, string credMail)
         {
             UserName = userName;
             City = city;
-            Usertype = userType;
             CredMail = credMail;
+        }
+        public User()
+        {
+            
         }
     }
 }
