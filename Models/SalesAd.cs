@@ -6,19 +6,22 @@ namespace EKGMaster.Models
 {
     public class SalesAd
     {
-        public int Id { get; set; }
         public string Title { get; set; }
-        public Product Product { get; set; }
-        public User User { get; set; }
+        public int ProductId { get; set; }
+        public int UserId { get; set; }
         public DateTime DateOfCreation { get; set; }
         
-        public SalesAd(int id, string title, Product product, User user, DateTime dateofcreation)
+        public SalesAd(string title, int productId, int userId, DateTime dateofcreation)
         {
-            Id = id;
             Title = title;
-            Product = product;
-            User = user;
+            ProductId = productId;
+            UserId = userId;
             DateOfCreation = dateofcreation;
+        }
+
+        public SalesAd()
+        {
+
         }
     
 

@@ -1,18 +1,54 @@
 ﻿using EKGMaster.Interfaces;
 using EKGMaster.Models;
+using EKGMaster.Models.ProductStuff;
+using EKGMaster.Models.UserStuff;
+using Microsoft.Data.SqlClient;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace EKGMaster.Repositories
 {
     public class SalesAdRepository : ICRUDRepository<SalesAd>
     {
-        public void Add(SalesAd t)
+        private readonly string _connectionString;
+        public SalesAdRepository(IConfiguration configuration)
         {
-            throw new NotImplementedException();
-        }
+            _connectionString = configuration.GetConnectionString("myDb1");
 
-        public void Delete(SalesAd t)
+        }
+        public void Add(SalesAd salesAd)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "INSERT INTO SalesAds (Title, Product, UserId, DateOfCreation)" + "VALUES(@Title, @Product, @UserId, @DateOfCreation)";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Title", salesAd.Title);
+                    command.Parameters.AddWithValue("@ProductId", salesAd.ProductId);
+                    command.Parameters.AddWithValue("@UserId", salesAd.UserId);
+                    command.Parameters.AddWithValue("@DateOfCreation", salesAd.DateOfCreation);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void Delete(SalesAd salesAd)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE FROM SalesAds WHERE Id = @Id";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", salesAd);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public List<SalesAd> GetAll()
@@ -20,14 +56,51 @@ namespace EKGMaster.Repositories
             throw new NotImplementedException();
         }
 
-        public SalesAd GetSingleObject(SalesAd t)
+        public SalesAd GetSingleObject(SalesAd salesAd)
         {
-            throw new NotImplementedException();
-        }
+            SalesAd salesAdd = new SalesAd();
 
-        public void Update(SalesAd t)
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT * FROM SalesAds,  ,  WHERE ProdId = @ProdId, UserId = @UserId Id = @Id";
+
+                    SqlCommand command = new SqlCommand(sql, connection);
+                
+                    command.Parameters.AddWithValue("@Id", salesAd);
+
+                     SqlDataReader reader = command.ExecuteReader();
+                    
+                        if (reader.Read())
+                        { 
+                            SalesAd salesAd1 = new SalesAd();
+                            salesAd.ProductId = reader.GetInt32(0);
+                            salesAd.UserId = reader.GetInt32(1);
+                            salesAd.Title = reader.GetString(2);
+                        }
+            }
+            return salesAd;
+        }
+            
+        
+
+        public void Update(SalesAd salesAd)
         {
-            throw new NotImplementedException();
+           using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "UPDATE SalesAds SET Title = @Title, Product = @Product, UserId = @UserId, DateOfCreation = @DateOfCreation WHERE Id = @Id";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Title", salesAd.Title);
+                    command.Parameters.AddWithValue("@Product", salesAd.ProductId);
+                    command.Parameters.AddWithValue("@UserId", salesAd.UserId);
+                    command.Parameters.AddWithValue("@DateOfCreation", salesAd.DateOfCreation);
+
+                    command.ExecuteNonQuery();
+                }                
+            }
         }
     }
 }

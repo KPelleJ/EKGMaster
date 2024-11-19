@@ -2,6 +2,7 @@
 {
     public class Product
     {
+        public int Id { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
         public string Brand { get; set; }
@@ -10,8 +11,9 @@
         public string Description { get; set; }
         public string Category  { get; set; }
 
-        public Product(string model, int year, string brand, double price, string picture, string description, string category)
+        public Product(int id,string model, int year, string brand, double price, string picture, string description, string category)
         {
+            Id = id;
             Model = model;
             Year = year;
             Brand = brand;
