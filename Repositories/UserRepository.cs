@@ -54,7 +54,7 @@ namespace EKGMaster.Repositories
             {
                 connection.Open();
 
-                string sql = "SELECT * FROM Users Where CredMail = @CredMail";
+                string sql = "SELECT * FROM Users Where CredEmail = @CredEmail";
 
                 SqlCommand command = new SqlCommand(sql, connection);
 
@@ -65,12 +65,11 @@ namespace EKGMaster.Repositories
                     User user = new User();
                     user.Id = reader.GetInt32(0);
                     user.UserName = reader.GetString(1);
-                    user.Credential.Email = reader.GetString(3);
+                    user.CredMail = reader.GetString(3);
                     user.City = reader.GetString(6);
 
                     userw = user;
                 }
-
             }
             return userw;
         }
@@ -80,12 +79,12 @@ namespace EKGMaster.Repositories
             {
                 connection.Open();
 
-                string sql = "UPDATE Users SET UserName = @UserName, CredMail = @CredMail, City = @City";
+                string sql = "UPDATE Users SET UserName = @UserName, CredEmail = @CredEmail, City = @City";
 
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 command.Parameters.AddWithValue("@UserName", t.UserName);
-                command.Parameters.AddWithValue("@CredMail", t.Credential.Email);
+                command.Parameters.AddWithValue("@CredMail", t.CredMail);
                 command.Parameters.AddWithValue("@City", t.City);
 
                 command.ExecuteNonQuery();
