@@ -24,6 +24,8 @@ namespace EKGMaster.Repositories
                 command.Parameters.AddWithValue("@UserLevelId", t.Usertype);
                 command.Parameters.AddWithValue("@CredMail", t.Credential.Email);
                 command.Parameters.AddWithValue("@City", t.City);
+
+                command.ExecuteNonQuery();
             }
         }
 
