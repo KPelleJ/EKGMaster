@@ -4,13 +4,7 @@
 }
 <div class="container border" style="padding:20px">
     <form method="post">
-        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <h3>Account information</h3>
-        <div class="mb-3">
-            <label asp-for="Computer.Category"></label>
-            <input type="text" asp-for="Computer.Category" class="form-control" />
-            <span class="text-danger" asp-validation-for="Computer.Category"></span>
-        </div>
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <h3>Account information</h3>
         <div class="mb-3">
@@ -87,6 +81,16 @@
             <label asp-for="Computer.GPU"></label>
             <input type="text" asp-for="Computer.GPU" class="form-control" />
             <span class="text-danger" asp-validation-for="Computer.GPU"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SalesAd.Title"></label>
+            <input type="text" asp-for="SalesAd.Title" class="form-control" />
+            <span class="text-danger" asp-validation-for="SalesAd.Title"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SalesAd.UserId"></label>
+            <input type="text" asp-for="SalesAd.UserId" class="form-control" />
+            <span class="text-danger" asp-validation-for="SalesAd.UserId"></span>
         </div>
         <div class="mb-2">
             <input type="submit" class="btn btn-primary" value="Register User" />
