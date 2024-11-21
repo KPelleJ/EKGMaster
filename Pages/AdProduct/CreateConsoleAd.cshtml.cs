@@ -1,39 +1,39 @@
 using EKGMaster.Interfaces;
-using EKGMaster.Models;
 using EKGMaster.Models.ProductStuff;
+using EKGMaster.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EKGMaster.Pages
+namespace EKGMaster.Pages.AdProduct
 {
-    public class TestpageModel : PageModel
+    public class CreateConsoleAdModel : PageModel
     {
-        private readonly ICategoryRepository<Computer> _pcrepo;
+        private readonly ICategoryRepository<GamingConsole> _consoleRepo;
         private readonly ICRUDRepository<SalesAd> _salesAdRepo;
 
         [BindProperty]
-        public Computer Computer { get; set; }
+        public GamingConsole GamingConsole { get; set; }
 
         [BindProperty]
         public SalesAd SalesAd { get; set; }
 
-        public TestpageModel(ICategoryRepository<Computer> pcrepo, ICRUDRepository<SalesAd> salesAdRepo) 
-        { 
-            _pcrepo = pcrepo;
+        public CreateConsoleAdModel(ICategoryRepository<GamingConsole> consoleRepo, ICRUDRepository<SalesAd> salesAdRepo)
+        {
+            _consoleRepo = consoleRepo;
             _salesAdRepo = salesAdRepo;
         }
 
         public void OnGet()
         {
-
         }
 
         public IActionResult OnPost()
         {
-            _pcrepo.Add(Computer);
-            SalesAd.ProductId = _pcrepo.GetNewestItem().Id;
+            _consoleRepo.Add(GamingConsole);
+            SalesAd.ProductId = _consoleRepo.GetNewestItem().Id;
 
             _salesAdRepo.Add(SalesAd);
+
             return RedirectToPage("/Index");
         }
     }

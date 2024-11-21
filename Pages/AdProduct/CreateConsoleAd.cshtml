@@ -1,0 +1,58 @@
+﻿@page
+@model EKGMaster.Pages.AdProduct.CreateConsoleAdModel
+@{
+}
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <h3>Account information</h3>
+        <div class="mb-3">
+            <label asp-for="GamingConsole.Description"></label>
+            <input type="text" asp-for="GamingConsole.Description" class="form-control" />
+            <span class="text-danger" asp-validation-for="GamingConsole.Description"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="GamingConsole.Year"></label>
+            <input type="text" asp-for="GamingConsole.Year" class="form-control" />
+            <span class="text-danger" asp-validation-for="GamingConsole.Year"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="GamingConsole.Brand"></label>
+            <input type="text" asp-for="GamingConsole.Brand" class="form-control" />
+            <span class="text-danger" asp-validation-for="GamingConsole.Brand"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="GamingConsole.Model"></label>
+            <input type="text" asp-for="GamingConsole.Model" class="form-control" />
+            <span class="text-danger" asp-validation-for="GamingConsole.Model"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="GamingConsole.Price"></label>
+            <input type="text" asp-for="GamingConsole.Price" class="form-control" />
+            <span class="text-danger" asp-validation-for="GamingConsole.Price"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="GamingConsole.Edition"></label>
+            <input type="text" asp-for="GamingConsole.Edition" class="form-control" />
+            <span class="text-danger" asp-validation-for="GamingConsole.Edition"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="GamingConsole.Storage"></label>
+            <input type="text" asp-for="GamingConsole.Storage" class="form-control" />
+            <span class="text-danger" asp-validation-for="GamingConsole.Storage"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SalesAd.Title"></label>
+            <input type="text" asp-for="SalesAd.Title" class="form-control" />
+            <span class="text-danger" asp-validation-for="SalesAd.Title"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SalesAd.UserId"></label>
+            <input type="text" asp-for="SalesAd.UserId" class="form-control" />
+            <span class="text-danger" asp-validation-for="SalesAd.UserId"></span>
+        </div>
+        <div class="mb-2">
+            <input type="submit" class="btn btn-primary" value="Create Ad" />
+        </div>
+    </form>
+</div>
