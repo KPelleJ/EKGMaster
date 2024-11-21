@@ -44,7 +44,7 @@ namespace EKGMaster.Repositories.ProductRepositories
             throw new NotImplementedException();
         }
 
-        public Product GetOne(Television t)
+        public Television GetOne(Television t)
         {
             throw new NotImplementedException();
         }
@@ -52,6 +52,26 @@ namespace EKGMaster.Repositories.ProductRepositories
         public void Update(Television t)
         {
             throw new NotImplementedException();
+        }
+        public Television GetNewestItem()
+        {
+            List<Television> products = new List<Television>();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT * FROM Products WHERE CatId = 2 ORDER BY Id";
+
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Television tv = new Television(reader.GetInt32(0));
+
+                    products.Add(tv);
+                }
+            }
+            return products.Last();
         }
     }
 }

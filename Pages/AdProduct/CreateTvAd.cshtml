@@ -2,3 +2,67 @@
 @model EKGMaster.Pages.CreateProducts.CreateTvProductModel
 @{
 }
+<div>
+<form method="post">
+    <h3>Account information</h3>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.Description"></label>
+        <input type="text" asp-for="Television.Description" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.Description"></span>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.Year"></label>
+        <input type="text" asp-for="Television.Year" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.Year"></span>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.Brand"></label>
+        <input type="text" asp-for="Television.Brand" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.Brand"></span>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.Model"></label>
+        <input type="text" asp-for="Television.Model" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.Model"></span>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.Price"></label>
+        <input type="text" asp-for="Television.Price" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.Price"></span>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.ScreenSize"></label>
+        <input type="text" asp-for="Television.ScreenSize" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.ScreenSize"></span>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.Resolution"></label>
+        <input type="text" asp-for="Television.Resolution" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.Resolution"></span>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <h3>Account information</h3>
+    <div class="mb-3">
+        <label asp-for="Television.SmartTv"></label>
+        <input type="checkbox" asp-for="Television.SmartTv" class="form-control" />
+        <span class="text-danger" asp-validation-for="Television.SmartTv"></span>
+    </div>
+    <div class="mb-2">
+        <input type="submit" class="btn btn-primary" value="Register User" />
+    </div>
+</form>
+</div>

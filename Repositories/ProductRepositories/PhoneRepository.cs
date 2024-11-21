@@ -47,7 +47,7 @@ namespace EKGMaster.Repositories.ProductRepositories
             throw new NotImplementedException();
         }
 
-        public Product GetOne(Phone product)
+        public Phone GetOne(Phone product)
         {
             throw new NotImplementedException();
         }
