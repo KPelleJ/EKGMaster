@@ -55,7 +55,7 @@ namespace EKGMaster.Repositories.ProductRepositories
 
         public Computer GetOne(Computer product)
         {
-            return new Computer();   
+            throw new NotImplementedException();   
         }
 
         public void Update(Computer product)
@@ -77,9 +77,9 @@ namespace EKGMaster.Repositories.ProductRepositories
 
                 while (reader.Read())
                 {
-                    Computer comp = new Computer(reader.GetInt32(0));
+                    Computer product = new Computer(reader.GetInt32(0));
 
-                    products.Add(comp);
+                    products.Add(product);
                 }
             }
             return products.Last();
