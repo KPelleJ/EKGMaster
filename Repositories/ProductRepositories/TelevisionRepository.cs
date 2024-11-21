@@ -29,7 +29,7 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@ScreenSize", t.ScreenSize);
                 command.Parameters.AddWithValue("@Resolution", t.Resolution);
                 command.Parameters.AddWithValue("@SmartTv", t.SmartTv);
-                
+                //Oh no
                 command.ExecuteNonQuery();
             }
         }
