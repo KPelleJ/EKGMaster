@@ -1,6 +1,6 @@
 ﻿namespace EKGMaster.Models.ProductStuff
 {
-    public class Phone
+    public class Phone : Product
     {
     }
 }

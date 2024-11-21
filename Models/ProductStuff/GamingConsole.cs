@@ -1,6 +1,7 @@
 ﻿namespace EKGMaster.Models.ProductStuff
 {
-    public class GamingConsole
+    public class GamingConsole:Product
     {
+
     }
 }

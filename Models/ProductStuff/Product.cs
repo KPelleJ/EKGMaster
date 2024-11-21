@@ -9,9 +9,10 @@
         public double Price { get; set; }
         public string Picture { get; set; }
         public string Description { get; set; }
-        public string Category  { get; set; }
+        public ProductCategory Category { get; protected set; }
+        public enum ProductCategory { Computer=1, Television=2, GamingConsole=3, Screen=4, Phone=5};
 
-        public Product(int id,string model, int year, string brand, double price, string picture, string description, string category)
+        public Product(int id,string model, int year, string brand, double price, string picture, string description, ProductCategory category)
         {
             Id = id;
             Model = model;
@@ -21,6 +22,11 @@
             Picture = picture;
             Description = description;
             Category = category;
+        }
+
+        public Product()
+        {
+            
         }
     }
 }

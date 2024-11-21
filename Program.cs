@@ -1,8 +1,10 @@
 using EKGMaster.Interfaces;
 using EKGMaster.Models;
+using EKGMaster.Models.Handlers;
 using EKGMaster.Models.ProductStuff;
 using EKGMaster.Models.UserStuff;
 using EKGMaster.Repositories;
+using EKGMaster.Repositories.ProductRepositories;
 
 namespace EKGMaster
 {
@@ -17,9 +19,13 @@ namespace EKGMaster
             builder.Services.AddSingleton<ICRUDRepository<Credential>, CredentialRepository>();
             builder.Services.AddSingleton<ICRUDRepository<Guide>, GuideRepository>();
             builder.Services.AddSingleton<ICRUDRepository<Message>, MessageRepository>();
-            builder.Services.AddSingleton<ICRUDRepository<Product>, ProductRepository>();
             builder.Services.AddSingleton<ICRUDRepository<SalesAd>, SalesAdRepository>();
             builder.Services.AddSingleton<ICRUDRepository<User>, UserRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
 
             var app = builder.Build();
 

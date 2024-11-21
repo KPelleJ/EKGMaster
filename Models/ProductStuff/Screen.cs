@@ -1,6 +1,7 @@
 ﻿namespace EKGMaster.Models.ProductStuff
 {
-    public class Monitor
+    public class Screen : Product
     {
+
     }
 }

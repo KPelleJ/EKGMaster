@@ -1,16 +1,16 @@
 ﻿using EKGMaster.Interfaces;
 using EKGMaster.Models.ProductStuff;
 
-namespace EKGMaster.Repositories
+namespace EKGMaster.Repositories.ProductRepositories
 {
-    public class ProductRepository : ICRUDRepository<Product>
+    public class TelevisionRepository //: ICategoryRepository
     {
-        public void Add(Product t)
+        public void Add(Product product)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Product t)
+        public void Delete(Product product)
         {
             throw new NotImplementedException();
         }
@@ -20,12 +20,12 @@ namespace EKGMaster.Repositories
             throw new NotImplementedException();
         }
 
-        public Product GetSingleObject(Product t)
+        public Product GetOne(Product product)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Product t)
+        public void Update(Product product)
         {
             throw new NotImplementedException();
         }
