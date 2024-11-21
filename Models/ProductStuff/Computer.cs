@@ -9,8 +9,14 @@
         public string CPU { get; set; }
         public string GPU { get; set; }
 
-        public Computer(int id, string model, int year, string brand, double price, string picture, string description, ProductCategory category) : base(id, model, year, brand, price, picture, description, category)
+        public Computer(string model, int year, string brand, double price, string picture, string description, ProductCategory category) : base(model, year, brand, price, picture, description, category)
         {
+            Category = ProductCategory.Computer;
+        }
+
+        public Computer(int id)
+        {
+            Id = id;
             Category = ProductCategory.Computer;
         }
 

@@ -22,17 +22,16 @@ namespace EKGMaster.Repositories
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string sql = "INSERT INTO SalesAds (Title, Product, UserId, DateOfCreation)" + "VALUES(@Title, @Product, @UserId, @DateOfCreation)";
+                string sql = "INSERT INTO SalesAds (ProdId, UserId, Title)" + "VALUES(@ProdId, @UserId, @Title)";
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@Title", salesAd.Title);
-                    command.Parameters.AddWithValue("@ProductId", salesAd.ProductId);
+                SqlCommand command = new SqlCommand(sql, connection);
+                
+                command.Parameters.AddWithValue("@ProdId", salesAd.ProductId);
                     command.Parameters.AddWithValue("@UserId", salesAd.UserId);
-                    command.Parameters.AddWithValue("@DateOfCreation", salesAd.DateOfCreation);
+                    command.Parameters.AddWithValue("@Title", salesAd.Title);
 
                     command.ExecuteNonQuery();
-                }
+                
             }
         }
         public void Delete(SalesAd salesAd)

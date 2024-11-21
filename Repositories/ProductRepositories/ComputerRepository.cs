@@ -41,22 +41,48 @@ namespace EKGMaster.Repositories.ProductRepositories
 
         public void Delete(Computer product)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE FROM Products WHERE Id = @Id";
+
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@Id", product.Id);
+
+                command.ExecuteNonQuery();
+            }
         }
 
-        public List<Product> GetAll()
+        public Computer GetOne(Computer product)
         {
-            throw new NotImplementedException();
-        }
-
-        public Product GetOne(Computer product)
-        {
-            throw new NotImplementedException();
+            return new Computer();   
         }
 
         public void Update(Computer product)
         {
             throw new NotImplementedException();
+        }
+
+        //Indtil videre virker det her men det kan nok gøres smartere
+        public Computer GetNewestItem()
+        {
+            List<Computer> products = new List<Computer>();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT * FROM Products WHERE CatId = 1 ORDER BY Id";
+
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Computer comp = new Computer(reader.GetInt32(0));
+
+                    products.Add(comp);
+                }
+            }
+            return products.Last();
         }
     }
 }
