@@ -57,10 +57,20 @@
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
     <h3>Account information</h3>
     <div class="mb-3">
-        <label asp-for="Television.SmartTv"></label>
-        <input type="checkbox" asp-for="Television.SmartTv" class="form-control" />
+        <label asp-for="Television.SmartTv" class="form-check-label"></label>
+        <input type="checkbox" asp-for="Television.SmartTv" class="form-check-input" />
         <span class="text-danger" asp-validation-for="Television.SmartTv"></span>
     </div>
+        <div class="mb-3">
+            <label asp-for="salesAd.Title"></label>
+            <input type="text" asp-for="salesAd.Title" class="form-control" />
+            <span class="text-danger" asp-validation-for="salesAd.Title"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="salesAd.UserId"></label>
+            <input type="text" asp-for="salesAd.UserId" class="form-control" />
+            <span class="text-danger" asp-validation-for="salesAd.UserId"></span>
+        </div>
     <div class="mb-2">
         <input type="submit" class="btn btn-primary" value="Register User" />
     </div>

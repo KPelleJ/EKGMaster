@@ -22,10 +22,10 @@ namespace EKGMaster
             builder.Services.AddSingleton<ICRUDRepository<SalesAd>, SalesAdRepository>();
             builder.Services.AddSingleton<ICRUDRepository<User>, UserRepository>();
             builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
-            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
-            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
-            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
-            builder.Services.AddSingleton<ICategoryRepository<Computer>, ComputerRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Television>, TelevisionRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Phone>, PhoneRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<GamingConsole>, GamingConsoleRepository>();
+            builder.Services.AddSingleton<ICategoryRepository<Screen>, MonitorRepository>();
 
             var app = builder.Build();
 
