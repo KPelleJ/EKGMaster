@@ -39,7 +39,16 @@ namespace EKGMaster.Repositories.ProductRepositories
 
         public void Delete(Phone product)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE FROM Products WHERE Id = @Id";
+
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@Id", product.Id);
+
+                command.ExecuteNonQuery();
+            }
         }
 
         public List<Product> GetAll()
@@ -49,12 +58,32 @@ namespace EKGMaster.Repositories.ProductRepositories
 
         public Phone GetOne(Phone product)
         {
-            throw new NotImplementedException();
+            return new Phone();
         }
 
         public void Update(Phone product)
         {
             throw new NotImplementedException();
+        }
+    public Phone GetNewestItem()
+    {
+        List<Phone> products = new List<Phone>();
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            string sql = "SELECT * FROM Products WHERE CatId = 1 ORDER BY Id";
+
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Phone phone = new Phone(reader.GetInt32(0));
+
+                products.Add(phone);
+            }
+        }
+        return products.Last();
         }
     }
 }

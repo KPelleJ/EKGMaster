@@ -7,12 +7,20 @@
         public string Storage {  get; set; }
         public string BatteryHealth { get; set; }
 
-        public Phone(string screensize, string operatingSystem, string storage, string batteryhealth)
+        public Phone(string model, int year, string brand, double price, string picture, string description, ProductCategory category, string batteryhealth, string screensize, string operatingsystem, string storage) : base(model, year, brand, price, picture, description, category)
         {
-            ScreenSize = screensize;
-            OperatingSystem = operatingSystem;
-            Storage = storage;
-            BatteryHealth = batteryhealth;
+            Category = ProductCategory.Phone;
+        }
+
+        public Phone(int id)
+        {
+            Id = id;
+            Category = ProductCategory.Phone;
+        }
+
+        public Phone()
+        {
+            Category = ProductCategory.Phone;
         }
     }
 }
