@@ -1,4 +1,6 @@
 ﻿using EKGMaster.Models.ProductStuff;
+using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EKGMaster.Interfaces
 {
@@ -11,7 +13,5 @@ namespace EKGMaster.Interfaces
         public void Update(T t);
 
         public void Delete(T t);
-
-        public T GetNewestItem();
     }
 }

@@ -26,9 +26,7 @@ namespace EKGMaster.Pages.CreateProducts
         }
         public IActionResult OnPost()
         {
-            _tvRepo.Add(Television);
-            salesAd.ProductId = _tvRepo.GetNewestItem().Id;
-
+           
             _salesAdRepository.Add(salesAd);
             return RedirectToPage("/Index");
         }

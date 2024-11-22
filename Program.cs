@@ -26,6 +26,7 @@ namespace EKGMaster
             builder.Services.AddSingleton<ICategoryRepository<Phone>, PhoneRepository>();
             builder.Services.AddSingleton<ICategoryRepository<GamingConsole>, GamingConsoleRepository>();
             builder.Services.AddSingleton<ICategoryRepository<Screen>, MonitorRepository>();
+            builder.Services.AddSingleton<ICreateProducts, ProductCreater>();
 
             var app = builder.Build();
 

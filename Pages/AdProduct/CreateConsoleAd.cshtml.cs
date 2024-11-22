@@ -8,8 +8,7 @@ namespace EKGMaster.Pages.AdProduct
 {
     public class CreateConsoleAdModel : PageModel
     {
-        private readonly ICategoryRepository<GamingConsole> _consoleRepo;
-        private readonly ICRUDRepository<SalesAd> _salesAdRepo;
+        private readonly ICreateProducts _productRepo;
 
         [BindProperty]
         public GamingConsole GamingConsole { get; set; }
@@ -17,10 +16,9 @@ namespace EKGMaster.Pages.AdProduct
         [BindProperty]
         public SalesAd SalesAd { get; set; }
 
-        public CreateConsoleAdModel(ICategoryRepository<GamingConsole> consoleRepo, ICRUDRepository<SalesAd> salesAdRepo)
+        public CreateConsoleAdModel(ICreateProducts productRepo)
         {
-            _consoleRepo = consoleRepo;
-            _salesAdRepo = salesAdRepo;
+            _productRepo = productRepo;
         }
 
         public void OnGet()
@@ -29,10 +27,7 @@ namespace EKGMaster.Pages.AdProduct
 
         public IActionResult OnPost()
         {
-            SalesAd.ProductId = _consoleRepo.Add(GamingConsole).Id;
-
-            _salesAdRepo.Add(SalesAd);
-
+            _productRepo.AddGamingConsole(GamingConsole, SalesAd);
             return RedirectToPage("/Index");
         }
     }

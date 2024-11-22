@@ -30,9 +30,6 @@ namespace EKGMaster.Pages
 
         public IActionResult OnPost()
         {
-            _pcrepo.Add(Computer);
-            SalesAd.ProductId = _pcrepo.GetNewestItem().Id;
-
             _salesAdRepo.Add(SalesAd);
             return RedirectToPage("/Index");
         }
