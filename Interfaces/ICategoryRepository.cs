@@ -6,7 +6,7 @@ namespace EKGMaster.Interfaces
     {
         public T GetOne(T t);
 
-        public void Add(T t);
+        public T Add(T t);
 
         public void Update(T t);
 

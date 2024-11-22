@@ -13,7 +13,7 @@ namespace EKGMaster.Repositories.ProductRepositories
             _connectionString = configuration.GetConnectionString("myDb1");
         }
 
-        public void Add(Phone product)
+        public Phone Add(Phone product)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -35,6 +35,7 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@BatteryHealth", product.BatteryHealth);
                 command.ExecuteNonQuery();
             }
+            return product;
         }
 
         public void Delete(Phone product)

@@ -13,7 +13,7 @@ namespace EKGMaster.Repositories.ProductRepositories
             _connectionString = configuration.GetConnectionString("myDb1");
         }
 
-        public void Add(Computer product)
+        public Computer Add(Computer product)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -36,7 +36,10 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@CPU", product.CPU);
                 command.Parameters.AddWithValue("@GPU", product.GPU);
                 command.ExecuteNonQuery();
+
+                string getId = "SELECT Id FROM Products WHERE Id = SCOPE_IDENTITY()";
             }
+            return product;
         }
 
         public void Delete(Computer product)

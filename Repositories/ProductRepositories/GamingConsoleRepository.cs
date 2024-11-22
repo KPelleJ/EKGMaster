@@ -12,14 +12,15 @@ namespace EKGMaster.Repositories.ProductRepositories
         {
             _connectionString = configuration.GetConnectionString("myDb1");
         }
-        public void Add(GamingConsole product)
+        public GamingConsole Add(GamingConsole product)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
 
                 string sql = "INSERT INTO Products (CatId, Description, Year, Brand, Model, Price, Edition, Storage) " +
-                             "VALUES (@CatId, @Description, @Year, @Brand, @Model, @Price, @Edition, @Storage)";
+                             "VALUES (@CatId, @Description, @Year, @Brand, @Model, @Price, @Edition, @Storage);" +
+                             "SELECT Id FROM Products WHERE Id = SCOPE_IDENTITY();";
 
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@CatId", (int)product.Category);
@@ -31,7 +32,15 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@Edition", product.Edition);
                 command.Parameters.AddWithValue("@Storage", product.Storage);
                 command.ExecuteNonQuery();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    product.Id = reader.GetInt32(0);
+                }
+
             }
+            return product;
         }
 
         public void Delete(GamingConsole t)

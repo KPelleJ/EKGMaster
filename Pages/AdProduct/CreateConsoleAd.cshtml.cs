@@ -29,8 +29,7 @@ namespace EKGMaster.Pages.AdProduct
 
         public IActionResult OnPost()
         {
-            _consoleRepo.Add(GamingConsole);
-            SalesAd.ProductId = _consoleRepo.GetNewestItem().Id;
+            SalesAd.ProductId = _consoleRepo.Add(GamingConsole).Id;
 
             _salesAdRepo.Add(SalesAd);
 

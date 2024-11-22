@@ -1,6 +1,6 @@
 ﻿namespace EKGMaster.Models.ProductStuff
 {
-    public class Product
+    public abstract class Product
     {
         public int Id { get; set; }
         public string Model { get; set; }

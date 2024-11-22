@@ -11,7 +11,7 @@ namespace EKGMaster.Repositories.ProductRepositories
         {
             _connectionString = configuration.GetConnectionString("myDb1");
         }
-        public void Add(Television t)
+        public Television Add(Television t)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -32,6 +32,7 @@ namespace EKGMaster.Repositories.ProductRepositories
 
                 command.ExecuteNonQuery();
             }
+            return t;
         }
 
         public void Delete(Television t)

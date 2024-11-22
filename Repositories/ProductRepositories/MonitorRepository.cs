@@ -5,7 +5,7 @@ namespace EKGMaster.Repositories.ProductRepositories
 {
     public class MonitorRepository : ICategoryRepository<Screen>
     {
-        public void Add(Screen t)
+        public Screen Add(Screen t)
         {
             throw new NotImplementedException();
         }
