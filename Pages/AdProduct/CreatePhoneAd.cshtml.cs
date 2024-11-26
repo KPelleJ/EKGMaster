@@ -27,7 +27,6 @@ namespace EKGMaster.Pages.AdProduct
         public IActionResult OnPost()
         {
             _phoneRepo.Add(Phone);
-            salesAd.ProductId = _phoneRepo.GetNewestItem().Id;
 
             _salesAdRepository.Add(salesAd);
             return RedirectToPage("/Index");                      

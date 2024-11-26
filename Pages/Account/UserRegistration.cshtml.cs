@@ -7,8 +7,7 @@ namespace EKGMaster.Pages.Account
 {
     public class UserRegistrationModel : PageModel
     {
-        private ICRUDRepository<User> _userRepository;
-        private ICRUDRepository<Credential> _credentialRepository;
+        private readonly ICreateUser _createUser;
 
         [BindProperty]
         public Credential Credential { get; set; }
@@ -16,10 +15,9 @@ namespace EKGMaster.Pages.Account
         [BindProperty]
         public User User { get; set; }
 
-        public UserRegistrationModel(ICRUDRepository<User> userRepo, ICRUDRepository<Credential> credRepo)
+        public UserRegistrationModel(ICreateUser createUser)
         {
-            _userRepository = userRepo;
-            _credentialRepository = credRepo;
+            _createUser = createUser;
         }
 
         public void OnGet()
@@ -29,15 +27,9 @@ namespace EKGMaster.Pages.Account
 
         public IActionResult OnPost()
         {
-            Credential.PasswordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Credential.Password, 12);
-            User.CredMail = Credential.Email;
-            
-            
             //if (!ModelState.IsValid) return Page();
 
-            _credentialRepository.Add(Credential);
-            _userRepository.Add(User);
-
+            _createUser.AddUserWithCredentials(Credential, User);
             return RedirectToPage("/Index");
         }
     }

@@ -14,20 +14,17 @@ namespace EKGMaster.Pages.CreateProducts
         [BindProperty]
         public Television Television { get; set; }
 
-        private ICRUDRepository<SalesAd> _salesAdRepository;
-        private ICategoryRepository<Television> _tvRepo;
-        public CreateTvProductModel(ICategoryRepository<Television> tvRepo, ICRUDRepository<SalesAd> salesAdRepository)
+        private readonly ICreateProducts _createProducts;
+        public CreateTvProductModel(ICreateProducts createProducts)
         {
-            _tvRepo = tvRepo;
-            _salesAdRepository = salesAdRepository;
+            _createProducts = createProducts;
         }
         public void OnGet()
         {
         }
         public IActionResult OnPost()
         {
-           
-            _salesAdRepository.Add(salesAd);
+            _createProducts.AddTelevision(Television, salesAd);
             return RedirectToPage("/Index");
         }
     }

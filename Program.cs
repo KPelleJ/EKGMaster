@@ -1,6 +1,7 @@
 using EKGMaster.Interfaces;
 using EKGMaster.Models;
 using EKGMaster.Models.Handlers;
+using EKGMaster.Models.ProductHandlers;
 using EKGMaster.Models.ProductStuff;
 using EKGMaster.Models.UserStuff;
 using EKGMaster.Repositories;
@@ -26,7 +27,17 @@ namespace EKGMaster
             builder.Services.AddSingleton<ICategoryRepository<Phone>, PhoneRepository>();
             builder.Services.AddSingleton<ICategoryRepository<GamingConsole>, GamingConsoleRepository>();
             builder.Services.AddSingleton<ICategoryRepository<Screen>, MonitorRepository>();
-            builder.Services.AddSingleton<ICreateProducts, ProductCreater>();
+            builder.Services.AddSingleton<ICreateProducts, AdProductCreater>();
+            builder.Services.AddSingleton<ICreateUser, LoginHandler>();
+
+            //builder.Services.AddDistributedMemoryCache();
+
+            //builder.Services.AddSession(options =>
+            //{
+            //    options.IdleTimeout = TimeSpan.FromDays(60);
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.IsEssential = true;
+            //});
 
             var app = builder.Build();
 
@@ -42,6 +53,8 @@ namespace EKGMaster
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //app.UseSession();
 
             app.UseAuthorization();
 

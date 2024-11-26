@@ -1,11 +1,11 @@
 ﻿using EKGMaster.Interfaces;
 using EKGMaster.Models.ProductStuff;
 
-namespace EKGMaster.Models.Handlers
+namespace EKGMaster.Models.ProductHandlers
 {
-    public class ProductCreater : ICreateProducts
+    public class AdProductCreater : ICreateProducts
     {
-        
+
         private readonly ICRUDRepository<SalesAd> _salesAdRepository;
         private readonly ICategoryRepository<Computer> _computerRepo;
         private readonly ICategoryRepository<GamingConsole> _consoleRepo;
@@ -13,12 +13,12 @@ namespace EKGMaster.Models.Handlers
         private readonly ICategoryRepository<Screen> _screenRepo;
         private readonly ICategoryRepository<Television> _tvRepo;
 
-        public ProductCreater
+        public AdProductCreater
         (
-            ICRUDRepository<SalesAd> salesAdRepo, 
-            ICategoryRepository<Computer> computerRepo, 
-            ICategoryRepository<GamingConsole> consoleRepo, 
-            ICategoryRepository<Phone> phoneRepo, 
+            ICRUDRepository<SalesAd> salesAdRepo,
+            ICategoryRepository<Computer> computerRepo,
+            ICategoryRepository<GamingConsole> consoleRepo,
+            ICategoryRepository<Phone> phoneRepo,
             ICategoryRepository<Screen> screenRepo,
             ICategoryRepository<Television> tvRepo
         )
@@ -33,8 +33,8 @@ namespace EKGMaster.Models.Handlers
 
         public void AddComputer(Computer product, SalesAd salesAd)
         {
-           salesAd.ProductId = _computerRepo.Add(product).Id;
-           _salesAdRepository.Add(salesAd);
+            salesAd.ProductId = _computerRepo.Add(product).Id;
+            _salesAdRepository.Add(salesAd);
         }
 
         public void AddGamingConsole(GamingConsole product, SalesAd salesAd)
