@@ -30,21 +30,20 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@Resolution", t.Resolution);
                 command.Parameters.AddWithValue("@SmartTv", t.SmartTv);
 
-                command.ExecuteNonQuery();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    t.Id = reader.GetInt32(0);
+                }
+
             }
             return t;
         }
-
         public void Delete(Television t)
         {
             throw new NotImplementedException();
         }
-
-        public List<Product> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public Television GetOne(Television t)
         {
             throw new NotImplementedException();
@@ -53,26 +52,6 @@ namespace EKGMaster.Repositories.ProductRepositories
         public void Update(Television t)
         {
             throw new NotImplementedException();
-        }
-        public Television GetNewestItem()
-        {
-            List<Television> products = new List<Television>();
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                string sql = "SELECT * FROM Products WHERE CatId = 2 ORDER BY Id";
-
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Television tv = new Television(reader.GetInt32(0));
-
-                    products.Add(tv);
-                }
-            }
-            return products.Last();
         }
     }
 }
