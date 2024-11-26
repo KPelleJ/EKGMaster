@@ -39,11 +39,11 @@ namespace EKGMaster.Repositories
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string sql = "DELETE FROM SalesAds WHERE Id = @Id";
+                string sql = "DELETE FROM SalesAds WHERE ProdId = @ProdId";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@Id", salesAd);
+                    command.Parameters.AddWithValue("@ProdId", salesAd.ProductId);
 
                     command.ExecuteNonQuery();
                 }
@@ -62,11 +62,11 @@ namespace EKGMaster.Repositories
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string sql = "SELECT * FROM SalesAds,  ,  WHERE ProdId = @ProdId, UserId = @UserId Id = @Id";
+                string sql = "SELECT * FROM SalesAds WHERE ProdId = @ProdId, UserId = @UserId Id = @Id";
 
                     SqlCommand command = new SqlCommand(sql, connection);
                 
-                    command.Parameters.AddWithValue("@Id", salesAd);
+                    command.Parameters.AddWithValue("@Id", salesAd.ProductId);
 
                      SqlDataReader reader = command.ExecuteReader();
                     
@@ -80,9 +80,7 @@ namespace EKGMaster.Repositories
             }
             return salesAd;
         }
-            
         
-
         public void Update(SalesAd salesAd)
         {
            using (SqlConnection connection = new SqlConnection(_connectionString))

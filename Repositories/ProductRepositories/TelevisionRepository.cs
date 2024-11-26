@@ -63,7 +63,27 @@ namespace EKGMaster.Repositories.ProductRepositories
 
         public void Update(Television t)
         {
-            
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string sql = "UPDATE Products SET Description = @Description, Year = @Year," +
+                    "Brand = @Brand, Model = @Model, Price = @Price, ScreenSize = @ScreenSize," +
+                    " Resolution = @Resolution, SmartTv = @SmartTv WHERE Id = @Id";
+
+                SqlCommand command = new SqlCommand(sql, connection);
+
+                command.Parameters.AddWithValue("@Description", t.Description);
+                command.Parameters.AddWithValue("@Year", t.Year);
+                command.Parameters.AddWithValue("@Brand", t.Brand);
+                command.Parameters.AddWithValue("@Model", t.Model);
+                command.Parameters.AddWithValue("@Price", t.Price);
+                command.Parameters.AddWithValue("@ScreenSize", t.ScreenSize);
+                command.Parameters.AddWithValue("@Resolution", t.Resolution);
+                command.Parameters.AddWithValue("@SmartTv", t.SmartTv);
+
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

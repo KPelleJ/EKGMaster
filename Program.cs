@@ -28,7 +28,8 @@ namespace EKGMaster
             builder.Services.AddSingleton<ICategoryRepository<GamingConsole>, GamingConsoleRepository>();
             builder.Services.AddSingleton<ICategoryRepository<Screen>, MonitorRepository>();
             builder.Services.AddSingleton<ICreateProducts, AdProductCreater>();
-            builder.Services.AddSingleton<ICreateUser, LoginHandler>();
+            builder.Services.AddSingleton<ICreateUser, UserCreator>();
+            builder.Services.AddSingleton<IDeleteProducts, AdProductDelete>();
 
             //builder.Services.AddDistributedMemoryCache();
 

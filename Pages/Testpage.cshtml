@@ -3,7 +3,7 @@
 @{
 }
 <div class="container border" style="padding:20px">
-    <form method="post">
+    <form method="post" asp-page-handler="Create">
         <h3>Account information</h3>
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <h3>Account information</h3>
@@ -97,3 +97,10 @@
         </div>
     </form>
 </div>
+
+<h2>Delete Item</h2>
+    <form method="Post">
+        <label asp-for="SalesAd.ProductId">Item ID:</label>
+        <input type="text" asp-for="SalesAd.ProductId" class="form-control" />
+        <button type="submit">Delete</button>
+    </form>

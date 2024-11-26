@@ -10,6 +10,7 @@ namespace EKGMaster.Pages
     {
         private readonly ICategoryRepository<Computer> _pcrepo;
         private readonly ICRUDRepository<SalesAd> _salesAdRepo;
+        private readonly IDeleteProducts _deleteProducts;
 
         [BindProperty]
         public Computer Computer { get; set; }
@@ -17,9 +18,10 @@ namespace EKGMaster.Pages
         [BindProperty]
         public SalesAd SalesAd { get; set; }
 
-        public TestpageModel(ICategoryRepository<Computer> pcrepo, ICRUDRepository<SalesAd> salesAdRepo) 
+        public TestpageModel(/*ICategoryRepository<Computer> pcrepo*/IDeleteProducts deleteProducts, ICRUDRepository<SalesAd> salesAdRepo) 
         { 
-            _pcrepo = pcrepo;
+            _deleteProducts = deleteProducts;
+           /* _pcrepo = pcrepo;*/
             _salesAdRepo = salesAdRepo;
         }
 
@@ -30,7 +32,7 @@ namespace EKGMaster.Pages
 
         public IActionResult OnPost()
         {
-            _salesAdRepo.Add(SalesAd);
+            _deleteProducts.DeleteProduct(Computer, SalesAd);
             return RedirectToPage("/Index");
         }
     }
