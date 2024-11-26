@@ -19,8 +19,9 @@ namespace EKGMaster.Repositories.ProductRepositories
             {
                 connection.Open();
 
-                string sql = "INSERT INTO Products (CatId, Description, Year, Brand, Model, Price, Storage, OperatingSystem, ScreenSize, BatteryHealth) " +
-                             "VALUES (@CatId, @Description, @Year, @Brand, @Model, @Price, @Storage, @OperatingSystem, @ScreenSize, @BatteryHealth)";
+                string sql = "INSERT INTO Products (CatId, Description, Year, Brand, Model, Price, Storage, OperatingSystem, ScreenSize, BatteryHealth)" +
+                             "VALUES (@CatId, @Description, @Year, @Brand, @Model, @Price, @Storage, @OperatingSystem, @ScreenSize, @BatteryHealth)" +
+                             "SELECT Id FROM Products WHERE Id = SCOPE_IDENTITY();";
 
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@CatId", (int)product.Category);
@@ -33,7 +34,13 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@OperatingSystem", product.OperatingSystem);
                 command.Parameters.AddWithValue("@ScreenSize", product.ScreenSize);
                 command.Parameters.AddWithValue("@BatteryHealth", product.BatteryHealth);
-                command.ExecuteNonQuery();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    product.Id = reader.GetInt32(0);
+                }
+
             }
             return product;
         }
@@ -66,25 +73,9 @@ namespace EKGMaster.Repositories.ProductRepositories
         {
             throw new NotImplementedException();
         }
-    public Phone GetNewestItem()
-    {
-        List<Phone> products = new List<Phone>();
-        using (SqlConnection connection = new SqlConnection(_connectionString))
+        public Phone GetNewestItem()
         {
-            connection.Open();
-            string sql = "SELECT * FROM Products WHERE CatId = 1 ORDER BY Id";
-
-            SqlCommand cmd = new SqlCommand(sql, connection);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Phone phone = new Phone(reader.GetInt32(0));
-
-                products.Add(phone);
-            }
-        }
-        return products.Last();
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,18 +8,18 @@ namespace EKGMaster.Pages.AdProduct
 {
     public class CreatePhoneAdModel : PageModel
     {
-        [BindProperty]
-        public SalesAd salesAd { get; set; }
-
+        private readonly ICreateProducts _productRepo;
         [BindProperty]
         public Phone Phone { get; set; }
 
+        [BindProperty]
+        public SalesAd SalesAd { get; set; }
+
         private ICRUDRepository<SalesAd> _salesAdRepository;
         private ICategoryRepository<Phone> _phoneRepo;
-        public CreatePhoneAdModel(ICategoryRepository<Phone> phoneRepo, ICRUDRepository<SalesAd> salesAdRepository)
+        public CreatePhoneAdModel(ICreateProducts productRepo)
         {
-            _phoneRepo = phoneRepo;
-            _salesAdRepository = salesAdRepository;
+            _productRepo = productRepo;
         }
         public void OnGet()
         {
@@ -28,7 +28,7 @@ namespace EKGMaster.Pages.AdProduct
         {
             _phoneRepo.Add(Phone);
 
-            _salesAdRepository.Add(salesAd);
+            _productRepo.AddPhone(Phone, SalesAd);
             return RedirectToPage("/Index");                      
         }
     }

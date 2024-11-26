@@ -20,7 +20,8 @@ namespace EKGMaster.Repositories.ProductRepositories
                 connection.Open();
 
                 string sql = "INSERT INTO Products (CatId, Description, Year, Brand, Model, Price, Storage, OperatingSystem, PSU, RAM, CPU, GPU) " +
-                             "VALUES (@CatId, @Description, @Year, @Brand, @Model, @Price, @Storage, @OperatingSystem, @PSU, @RAM, @CPU, @GPU)";
+                             "VALUES (@CatId, @Description, @Year, @Brand, @Model, @Price, @Storage, @OperatingSystem, @PSU, @RAM, @CPU, @GPU);" +
+                             "SELECT Id FROM Products WHERE Id = SCOPE_IDENTITY();";
 
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@CatId", (int)product.Category);
@@ -35,9 +36,12 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@RAM", product.RAM);
                 command.Parameters.AddWithValue("@CPU", product.CPU);
                 command.Parameters.AddWithValue("@GPU", product.GPU);
-                command.ExecuteNonQuery();
 
-                string getId = "SELECT Id FROM Products WHERE Id = SCOPE_IDENTITY()";
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    product.Id = reader.GetInt32(0);
+                }
             }
             return product;
         }

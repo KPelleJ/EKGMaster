@@ -2,3 +2,47 @@
 @model EKGMaster.Pages.AdProduct.CreatePCAdModel
 @{
 }
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <h3>Account information</h3>
+        <div class="mb-3">
+            <label asp-for="Computer.Description"></label>
+            <input type="text" asp-for="Computer.Description" class="form-control" />
+            <span class="text-danger" asp-validation-for="Computer.Description"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Computer.Year"></label>
+            <input type="text" asp-for="Computer.Year" class="form-control" />
+            <span class="text-danger" asp-validation-for="Computer.Year"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Computer.Brand"></label>
+            <input type="text" asp-for="Computer.Brand" class="form-control" />
+            <span class="text-danger" asp-validation-for="Computer.Brand"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Computer.Model"></label>
+            <input type="text" asp-for="Computer.Model" class="form-control" />
+            <span class="text-danger" asp-validation-for="Computer.Model"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Computer.Price"></label>
+            <input type="text" asp-for="Computer.Price" class="form-control" />
+            <span class="text-danger" asp-validation-for="Computer.Price"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Computer.Storage"></label>
+            <input type="text" asp-for="Computer.Storage" class="form-control" />
+            <span class="text-danger" asp-validation-for="Computer.Storage"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Computer"></label>
+            <input type="text" asp-for="Computer" class="form-control" />
+            <span class="text-danger" asp-validation-for="Computer"></span>
+        </div>
+        <div class="mb-2">
+            <input type="submit" class="btn btn-primary" value="Create Ad" />
+        </div>
+    </form>
+</div>

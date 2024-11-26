@@ -14,12 +14,6 @@
             Category = ProductCategory.Computer;
         }
 
-        public Computer(int id)
-        {
-            Id = id;
-            Category = ProductCategory.Computer;
-        }
-
         public Computer()
         {
             Category = ProductCategory.Computer;
