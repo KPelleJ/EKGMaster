@@ -9,10 +9,5 @@
         { 
             Category = ProductCategory.GamingConsole;
         }
-
-        public GamingConsole(int id)
-        {
-            Id = id;
-        }
     }
 }

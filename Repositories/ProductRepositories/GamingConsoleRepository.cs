@@ -12,6 +12,7 @@ namespace EKGMaster.Repositories.ProductRepositories
         {
             _connectionString = configuration.GetConnectionString("myDb1");
         }
+
         public GamingConsole Add(GamingConsole product)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -31,7 +32,6 @@ namespace EKGMaster.Repositories.ProductRepositories
                 command.Parameters.AddWithValue("@Price", product.Price);
                 command.Parameters.AddWithValue("@Edition", product.Edition);
                 command.Parameters.AddWithValue("@Storage", product.Storage);
-                //command.ExecuteNonQuery();
 
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())

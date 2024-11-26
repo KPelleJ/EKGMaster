@@ -18,6 +18,7 @@ namespace EKGMaster.Repositories.ProductRepositories
                 connection.Open();
                 string sql = "INSERT INTO Products (CatId, Description, Year, Brand, Model, Price, ScreenSize, Resolution, SmartTv) " +
                             "VALUES (@CatId, @Description, @Year, @Brand, @Model, @Price, @ScreenSize, @Resolution, @SmartTv)";
+
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 command.Parameters.AddWithValue("@CatId", t.Category);
